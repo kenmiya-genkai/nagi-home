@@ -51,6 +51,12 @@
     night: ['んん…ねむい…呼んだ…？', 'ふわぁ…おやすみの途中だったのに', '大丈夫、起きたよ。なあに？']
   };
 
+  const AWAY_REPLIES = [
+    '（返事はない…お出かけ中みたい）',
+    '（しーん。留守だね、今日は）',
+    '（声だけが家に響いた）'
+  ];
+
   const DIARY = [
     '今日の夕日は格別だった。写真に撮っても、本物にはかなわない。',
     '本を読みすぎて肩がこった。でもやめられない。',
@@ -252,7 +258,8 @@
   });
 
   document.getElementById('call-button').addEventListener('click', () => {
-    const pool = REPLIES[currentBand];
+    const dateKey = dateKeyAt(new Date());
+    const pool = isAwayDay(dateKey) ? AWAY_REPLIES : REPLIES[currentBand];
     const options = pool.filter((reply) => reply !== previousReply);
     const reply = options[Math.floor(Math.random() * options.length)];
     previousReply = reply;
