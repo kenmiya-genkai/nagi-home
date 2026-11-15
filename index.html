@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#fff3d7">
+  <title>なぎのおうち</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body class="band-morning">
+  <main class="home" aria-labelledby="page-title">
+    <h1 id="page-title" class="visually-hidden">なぎのおうち</h1>
+    <figure class="photo-card">
+      <div id="photo-visual" class="photo-visual">
+        <img id="nagi-image" src="assets/morning.webp" alt="朝ごはんを食べるなぎ">
+        <div id="weather-fx" class="fx-layer" aria-hidden="true"></div>
+        <div class="dance-notes" aria-hidden="true"><span>♪</span><span>♪</span><span>♫</span></div>
+      </div>
+    </figure>
+    <section id="dance-video-card" class="dance-video-card" aria-label="なぎのダンス" hidden>
+      <video id="dance-video" playsinline loop preload="none" aria-label="なぎのダンス動画"></video>
+      <button id="dance-return-button" class="action-button dance-return-button" type="button">お部屋に戻る</button>
+    </section>
+    <article id="away-note" class="away-note" hidden></article>
+    <section class="details" aria-live="polite">
+      <p id="time" class="time">--:-- <span>JST</span></p>
+      <p id="weather-chip" class="weather-chip" hidden></p>
+      <p id="band-label" class="band-label">あさのなぎ</p>
+      <p id="line" class="line">おはよう。朝ごはん、ちゃんと食べる派です</p>
+      <p id="visitor-note" class="visitor-note" hidden></p>
+      <p id="away-letter-note" class="away-letter-note" hidden>ポストに手紙が届いてたみたい</p>
+      <p id="reply-bubble" class="reply-bubble" aria-live="polite" hidden></p>
+      <div class="actions">
+        <button id="call-button" class="action-button" type="button">なぎに声をかける</button>
+        <button id="diary-button" class="action-button" type="button">📖 日記帳</button>
+        <button id="dance-button" class="action-button" type="button" hidden>ダンスを見る♪</button>
+      </div>
+      <button id="letter-button" class="letter-button" type="button" hidden>
+        <span aria-hidden="true">📮</span> ポスト <span id="letter-badge" class="letter-badge" aria-label="未読">✉️</span>
+      </button>
+    </section>
+  </main>
+  <div id="letter-overlay" class="letter-overlay" hidden>
+    <section class="letter" role="dialog" aria-modal="true" aria-labelledby="letter-title">
+      <button id="letter-close" class="letter-close" type="button" aria-label="手紙を閉じる">×</button>
+      <h2 id="letter-title">なぎからの手紙</h2>
+      <p id="letter-content"></p>
+      <p class="letter-signature">なぎより</p>
+    </section>
+  </div>
+  <div id="diary-overlay" class="letter-overlay" hidden>
+    <section class="letter diary" role="dialog" aria-modal="true" aria-labelledby="diary-title">
+      <button id="diary-close" class="letter-close" type="button" aria-label="日記帳を閉じる">×</button>
+      <h2 id="diary-title">なぎの日記帳</h2>
+      <p id="diary-date" class="diary-date"></p>
+      <p id="diary-content"></p>
+    </section>
+  </div>
+</body>
+</html>
