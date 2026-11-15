@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f0e7">
+  <title>なぎのおうち｜V2ベータ</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="home">
+    <header class="topbar">
+      <div><h1>なぎのおうち <span class="beta">V2ベータ</span></h1><p id="band-label">あさのなぎ</p></div>
+      <div class="status"><time id="time"></time><span id="weather-chip" class="chip" hidden></span><span id="moon-chip" class="chip" hidden></span></div>
+    </header>
+    <section id="scene" class="scene" aria-label="なぎのおうちの様子">
+      <img id="background" class="background" src="assets/bg-day.webp" alt="">
+      <div id="weather-fx" class="fx-layer"></div><div id="window-event" class="window-event"></div>
+      <img id="cat" class="cat" alt="">
+      <div id="rare-star" class="rare-star" aria-hidden="true"></div>
+      <div id="boat-light" class="boat-light" aria-hidden="true"></div>
+      <img id="nagi" class="nagi" alt="">
+      <div id="laundry" class="decoration laundry" aria-hidden="true"></div>
+      <div id="plant" class="decoration plant" aria-hidden="true"></div>
+      <span id="season" class="season" aria-hidden="true"></span>
+      <p id="night-book" class="night-book" hidden></p>
+      <p id="event-note" class="event-note" hidden></p>
+      <p id="away-note" class="away-note" hidden></p>
+    </section>
+    <p id="line" class="line" aria-live="polite"></p>
+    <p id="reply-bubble" class="reply" aria-live="polite" hidden></p>
+    <nav class="actions" aria-label="できること">
+      <button id="call-button" type="button">なぎに声をかける</button>
+      <button id="letter-button" type="button" hidden>ポスト <span id="letter-badge" class="badge">手紙</span></button>
+      <button id="diary-button" type="button">日記帳</button>
+      <span id="dance-label" class="dance-label" hidden>ダンス♪</span>
+    </nav>
+    <section class="collection"><div class="section-heading"><h2>コレクション棚</h2><span id="collection-count">0件</span></div><div id="collection-items" class="collection-items"></div></section>
+    <footer><span id="visit-record"></span><a href="../">V1はこちら</a></footer>
+  </main>
+  <div id="diary-overlay" class="overlay" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="diary-title"><button id="diary-close" class="close" type="button" aria-label="閉じる">×</button><h2 id="diary-title">なぎの日記</h2><time id="diary-date"></time><p id="diary-content"></p></section></div>
+  <div id="letter-overlay" class="overlay" hidden><section class="modal letter-modal" role="dialog" aria-modal="true" aria-labelledby="letter-title"><button id="letter-close" class="close" type="button" aria-label="閉じる">×</button><h2 id="letter-title">なぎからの手紙</h2><p id="letter-content"></p></section></div>
+</body>
+</html>
