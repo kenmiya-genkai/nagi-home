@@ -76,6 +76,13 @@
     '島の反対側までお散歩中。戻ったらお茶にしよう。— なぎ'
   ];
 
+  const AWAY_IMAGES = {
+    morning: 'assets/away-day.webp',
+    noon: 'assets/away-day.webp',
+    evening: 'assets/away-evening.webp',
+    night: 'assets/away-night.webp'
+  };
+
   function dayNumberFor(dateKey) {
     const parts = dateKey.split('-').map(Number);
     return Math.floor(Date.UTC(parts[0], parts[1] - 1, parts[2]) / 86400000);
@@ -129,6 +136,10 @@
     return 'night';
   }
 
+  function awayImageFor(band) {
+    return AWAY_IMAGES[band];
+  }
+
   function pickLineIndex(dateKey, band) {
     // UTC midnight day count keeps this pure and independent of the viewer's zone.
     const dayNumber = dayNumberFor(dateKey);
@@ -136,7 +147,7 @@
     return ((dayNumber + offset) % 3 + 3) % 3;
   }
 
-  window.NAGI_HOME = { bandForHour, pickLineIndex, isLetterDay, pickLetterIndex, isCatDay, pickDiaryIndex, isAwayDay, isDanceDay, visitorFor, weatherKind };
+  window.NAGI_HOME = { bandForHour, pickLineIndex, isLetterDay, pickLetterIndex, isCatDay, pickDiaryIndex, isAwayDay, isDanceDay, visitorFor, weatherKind, awayImageFor };
 
   const hourFormatter = new Intl.DateTimeFormat('en-GB', {
     timeZone: 'Asia/Tokyo', hour: '2-digit', hourCycle: 'h23'
@@ -195,16 +206,16 @@
       danceVideo.pause();
       danceVideoOpen = false;
     }
-    photoCard.hidden = awayToday || (danceToday && danceVideoOpen);
+    photoCard.hidden = danceToday && danceVideoOpen;
     danceVideoCard.hidden = !danceToday || !danceVideoOpen;
     danceButton.hidden = !danceToday;
-    const nextImage = catToday ? 'assets/noon-cat.webp' : data.image;
+    const nextImage = awayToday ? awayImageFor(band) : (catToday ? 'assets/noon-cat.webp' : data.image);
     if (image.getAttribute('src') !== nextImage) {
       image.classList.add('image-changing');
       image.onload = () => image.classList.remove('image-changing');
       image.src = nextImage;
     }
-    image.alt = catToday ? '猫と一緒にごろごろするなぎ' : data.alt;
+    image.alt = awayToday ? 'おでかけ中で空っぽのお部屋' : (catToday ? '猫と一緒にごろごろするなぎ' : data.alt);
     const awayNote = document.getElementById('away-note');
     awayNote.textContent = AWAY_NOTES[((dayNumberFor(dateKey) % 3) + 3) % 3];
     awayNote.hidden = !awayToday;
@@ -215,7 +226,7 @@
       ? (showLetter ? '潮が手紙を届けに来てくれた。「いつもありがとう」って、笑ってた。' : '潮が顔を出してくれた。海の話を少しだけ。')
       : (visitor === 'kouchan' ? 'こうちゃんが遊びに来た。お菓子を置いていってくれた。' : '');
     const fx = document.getElementById('weather-fx');
-    fx.className = `fx-layer${currentWeather && !awayToday ? ` fx-${currentWeather.kind}${currentWeather.kind === 'clear' && band === 'evening' ? ' fx-sunset' : ''}` : ''}`;
+    fx.className = `fx-layer${currentWeather ? ` fx-${currentWeather.kind}${currentWeather.kind === 'clear' && band === 'evening' ? ' fx-sunset' : ''}` : ''}`;
     const weatherChip = document.getElementById('weather-chip');
     weatherChip.hidden = !currentWeather;
     if (currentWeather) weatherChip.textContent = `玄界島の空：${currentWeather.icon}${currentWeather.label}`;
