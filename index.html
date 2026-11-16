@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f0e7">
-  <title>なぎのおうち｜V2.2.1</title>
+  <title>なぎのおうち｜V2.3</title>
   <link rel="stylesheet" href="style.css">
   <script src="content.js" defer></script>
   <script src="app.js" defer></script>
@@ -12,7 +12,7 @@
 <body>
   <main class="home">
     <header class="topbar">
-      <div><h1>なぎのおうち <span class="beta">V2.2.1</span></h1><p id="band-label">あさのなぎ</p><p id="greeting"></p></div>
+      <div><h1>なぎのおうち <span class="beta">V2.3</span></h1><p id="band-label">あさのなぎ</p><p id="greeting"></p></div>
       <div class="status"><time id="time"></time><span id="weather-chip" class="chip" hidden></span><span id="sunset-chip" class="chip" hidden></span><span id="moon-chip" class="chip" hidden></span></div>
     </header>
     <section id="scene" class="scene" aria-label="なぎのおうちの様子">
@@ -20,13 +20,15 @@
       <div id="weather-fx" class="fx-layer"></div><div id="window-event" class="window-event"></div>
       <div id="stars" aria-hidden="true"></div><div id="ferry" aria-hidden="true"></div><div id="creature" aria-hidden="true"></div>
       <img id="cat" class="cat" alt="">
+      <img id="visitor-cat" class="visitor-cat" src="assets/visitor-cat.webp" alt="" hidden>
+      <div id="rainbow" hidden></div>
       <div id="rare-star" class="rare-star" aria-hidden="true"></div>
       <div id="boat-light" class="boat-light" aria-hidden="true"></div>
       <img id="nagi" class="nagi" alt="">
       <img id="blink-img" class="nagi" alt="">
       <div id="lamp-glow" hidden></div><div id="sunset-glow" hidden></div><div id="moonlight" hidden></div><div id="lightning" hidden></div><div id="fireflies" hidden></div>
       <div id="cal-chip"></div><div id="wall-clock"><i class="hour-hand"></i><i class="minute-hand"></i><i class="second-hand"></i></div><div id="books-done"></div>
-      <img id="furin-img" src="assets/prop-furin.webp" alt="" hidden><img id="flower-img" alt="" hidden><img id="frame-photo" alt="" hidden><div id="wall-note" hidden></div>
+      <img id="furin-img" src="assets/prop-furin.webp" alt="" hidden><img id="flower-img" alt="" hidden><img id="frame-photo" alt="" hidden>
       <img id="laundry-img" class="decoration laundry" alt="">
       <img id="plant-img" class="decoration plant" alt="">
       <img id="umbrella" class="decoration umbrella" alt="">
@@ -47,6 +49,7 @@
     <p id="line" class="line" aria-live="polite"></p>
     <p id="reply-bubble" class="reply" aria-live="polite" hidden></p>
     <nav class="actions" aria-label="できること">
+      <button id="treat-btn" type="button">🎁 差し入れする</button>
       <button id="call-button" type="button">なぎに声をかける</button>
       <button id="letter-button" type="button" hidden>ポスト <span id="letter-badge" class="badge">手紙</span></button>
       <button id="diary-button" type="button">日記帳</button>
@@ -55,6 +58,7 @@
       <button id="guestbook-button" type="button">📖 ゲストブック</button>
       <button id="dance-button" type="button" hidden>ダンスを見る♪</button>
     </nav>
+    <div id="treat-panel" hidden></div>
     <section class="collection"><div class="section-heading"><h2>コレクション棚</h2><span id="collection-count">0件</span></div><div id="collection-items" class="collection-items"></div></section>
     <footer><span id="visit-record"></span></footer>
   </main>
