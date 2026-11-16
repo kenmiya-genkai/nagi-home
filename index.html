@@ -4,36 +4,46 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f6f0e7">
-  <title>なぎのおうち｜V2ベータ</title>
+  <title>なぎのおうち｜V2.1</title>
   <link rel="stylesheet" href="style.css">
+  <script src="content.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
   <main class="home">
     <header class="topbar">
-      <div><h1>なぎのおうち <span class="beta">V2ベータ</span></h1><p id="band-label">あさのなぎ</p></div>
-      <div class="status"><time id="time"></time><span id="weather-chip" class="chip" hidden></span><span id="moon-chip" class="chip" hidden></span></div>
+      <div><h1>なぎのおうち <span class="beta">V2.1</span></h1><p id="band-label">あさのなぎ</p><p id="greeting"></p></div>
+      <div class="status"><time id="time"></time><span id="weather-chip" class="chip" hidden></span><span id="sunset-chip" class="chip" hidden></span><span id="moon-chip" class="chip" hidden></span></div>
     </header>
     <section id="scene" class="scene" aria-label="なぎのおうちの様子">
       <img id="background" class="background" src="assets/bg-day.webp" alt="">
       <div id="weather-fx" class="fx-layer"></div><div id="window-event" class="window-event"></div>
+      <div id="stars" aria-hidden="true"></div><div id="ferry" aria-hidden="true"></div><div id="creature" aria-hidden="true"></div>
       <img id="cat" class="cat" alt="">
       <div id="rare-star" class="rare-star" aria-hidden="true"></div>
       <div id="boat-light" class="boat-light" aria-hidden="true"></div>
       <img id="nagi" class="nagi" alt="">
-      <div id="laundry" class="decoration laundry" aria-hidden="true"></div>
-      <div id="plant" class="decoration plant" aria-hidden="true"></div>
+      <img id="laundry-img" class="decoration laundry" alt="">
+      <img id="plant-img" class="decoration plant" alt="">
+      <img id="umbrella" class="decoration umbrella" alt="">
+      <img id="himono" class="decoration himono" alt="">
+      <figure id="island-photo" hidden><img id="island-photo-img" alt=""><figcaption id="island-photo-caption"></figcaption></figure>
       <span id="season" class="season" aria-hidden="true"></span>
       <p id="night-book" class="night-book" hidden></p>
+      <p id="dream-note" class="night-book dream-note" hidden></p>
+      <p id="preview-note" class="night-book preview-note" hidden></p>
       <p id="event-note" class="event-note" hidden></p>
       <p id="away-note" class="away-note" hidden></p>
     </section>
+    <section id="verse-card" class="verse-card"><small>今日の一句</small><p></p></section>
     <p id="line" class="line" aria-live="polite"></p>
     <p id="reply-bubble" class="reply" aria-live="polite" hidden></p>
     <nav class="actions" aria-label="できること">
       <button id="call-button" type="button">なぎに声をかける</button>
       <button id="letter-button" type="button" hidden>ポスト <span id="letter-badge" class="badge">手紙</span></button>
       <button id="diary-button" type="button">日記帳</button>
+      <button id="photo-button" type="button">📷 写真モード</button>
+      <button id="guestbook-button" type="button">📖 ゲストブック</button>
       <span id="dance-label" class="dance-label" hidden>ダンス♪</span>
     </nav>
     <section class="collection"><div class="section-heading"><h2>コレクション棚</h2><span id="collection-count">0件</span></div><div id="collection-items" class="collection-items"></div></section>
@@ -41,5 +51,7 @@
   </main>
   <div id="diary-overlay" class="overlay" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="diary-title"><button id="diary-close" class="close" type="button" aria-label="閉じる">×</button><h2 id="diary-title">なぎの日記</h2><time id="diary-date"></time><p id="diary-content"></p></section></div>
   <div id="letter-overlay" class="overlay" hidden><section class="modal letter-modal" role="dialog" aria-modal="true" aria-labelledby="letter-title"><button id="letter-close" class="close" type="button" aria-label="閉じる">×</button><h2 id="letter-title">なぎからの手紙</h2><p id="letter-content"></p></section></div>
+  <div id="guestbook-overlay" class="overlay" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="guestbook-title"><button id="guestbook-close" class="close" type="button" aria-label="閉じる">×</button><h2 id="guestbook-title">ゲストブック</h2><textarea id="guestbook-text" maxlength="500" rows="4" aria-label="書き込み"></textarea><button id="guestbook-save" type="button">保存</button><div id="guestbook-entries"></div></section></div>
+  <button id="photo-exit" type="button" hidden>戻る</button>
 </body>
 </html>
