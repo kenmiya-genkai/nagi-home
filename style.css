@@ -32,4 +32,4 @@ body.photo-mode #wallpaper-btn{display:block}
 .pose-read.nagi-layer-wrap,.pose-read.nagi-layer,.pose-read-twin.nagi-layer-wrap,.pose-read-twin.nagi-layer{height:80%;max-width:85%;left:38%;bottom:1%;object-position:center bottom}
 .pose-wave{height:82%;max-width:60%;left:56%;bottom:1%;transform:translateX(-50%);object-position:center bottom}
 @media(max-width:560px){#night-book{bottom:5px;right:5px;left:auto}.preview-note{bottom:33px;left:5px;right:auto}.dream-note{bottom:61px;left:5px;right:auto}}
-.fx-layer.fx-rain,.fx-layer.fx-storm,.fx-layer.fx-snow{clip-path:inset(0 12% 46% 53%)}
+.fx-layer.fx-rain,.fx-layer.fx-storm,.fx-layer.fx-snow{clip-path:inset(0 12% 46% 53%)}.bg-view{position:absolute;left:58.33%;top:0;width:30.99%;height:57.42%;object-fit:cover;z-index:-4}
